@@ -2,6 +2,6 @@
     "watch": ["src", ".env"],
     "ext": "ts",
     "ignore": ["src/**/*.test.ts"],
-    "exec": "ts-node ./src/app.ts"
+    "exec": "ts-node ./src/application/app.ts"
   }
   

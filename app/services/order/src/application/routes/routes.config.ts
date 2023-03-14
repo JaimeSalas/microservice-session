@@ -1,6 +1,6 @@
 import { Application } from "express";
-import { exampleRoute } from "./example.route";
+import { orderRoute } from "./order.route";
 
 export const routesInit = (app: Application) => {
-  app.use("/example", exampleRoute());
+  app.use("/order", orderRoute());
 };
