@@ -7,7 +7,11 @@
     "start:dev": "nodemon",
     "prebuild": "rimraf ./dist",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "jest --clearCache",
+    "test": "jest --detectOpenHandles --verbose -i",
+    "prebuild-protos": "rimraf src/grpc/proto/*",
+    "build-protos": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/grpc/proto --grpc_out=grpc_js:./src/grpc/proto --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin -I ./src/proto ./src/proto/*.proto",
+    "postbuild-protos": "grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:./src/grpc/proto -I ./src/proto ./src/proto/*.proto"
   },
   "keywords": [],
   "author": "",
@@ -15,15 +19,23 @@
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.16",
+    "@types/google-protobuf": "^3.15.6",
+    "@types/jest": "^29.4.0",
     "dotenv": "^16.0.3",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "grpc-tools": "^1.12.4",
+    "jest": "^29.4.1",
     "nodemon": "^2.0.20",
     "rimraf": "^4.1.2",
+    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.8.7",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "google-protobuf": "^3.21.2",
     "winston": "^3.8.2"
   }
 }

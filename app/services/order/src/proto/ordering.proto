@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package ordering;
+
+import "google/protobuf/empty.proto";
+
+service Ordering {
+	rpc CreateOrder(CreateOrderRequest) returns (google.protobuf.Empty) {}
+}
+
+message CreateOrderRequest {
+	string buyerId = 1;
+  Address address = 2;
+  Payment payment = 3;
+  repeated BasketItem items = 4;
+}
+
+
+message Address {
+  string city = 1;
+  string street = 2;
+  string state = 3;
+  string country = 4;
+  string zipcode = 5;
+}
+
+message Payment {
+  string card_number = 1;
+  string card_holder_name = 2;
+  string card_experiration = 3;
+  string card_security_number = 4;
+  int32 card_type_id = 5;
+}
+
+message BasketItem {
+  string id = 1;
+  int32 productId = 2;
+  string productName = 3;
+  double unitPrice = 4;
+  double oldUnitPrice = 5;
+  int32 quantity = 6;
+  string pictureUrl = 7;
+}
