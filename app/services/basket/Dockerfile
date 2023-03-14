@@ -20,4 +20,6 @@ COPY ./package-lock.json ./package-lock.json
 
 RUN npm ci --only=production    
 
+ENV NODE_ENV=production
+
 CMD ["node", "app.js"]

@@ -5,7 +5,7 @@ export default {
     },
 
     GRPC: {
-      HOST: process.env.GRPC_HOST || "0.0.0.0",
+      HOST: process.env.GRPC_HOST || "localhost",
       PORT: process.env.GRPC_PORT || "5000",
       ENABLED: (process.env.GRPC_ENABLED === "true") || true
     },

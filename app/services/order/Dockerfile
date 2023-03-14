@@ -1,4 +1,4 @@
-FROM node:18-alpine3.16 as builder
+FROM node:18-bullseye as builder
 
 WORKDIR /opt/build 
 
@@ -8,7 +8,7 @@ RUN npm ci
 
 RUN npm run build 
 
-FROM node:18-alpine3.16 as app 
+FROM node:18-bullseye as app 
 
 WORKDIR /opt/app 
 

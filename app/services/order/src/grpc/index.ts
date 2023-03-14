@@ -7,7 +7,7 @@ export const serve = () => {
   const server = new Server();
   server.addService(OrderingService, new OrderingServer());
   server.bindAsync(
-    `${config.GRPC.HOST}:${config.GRPC.PORT}`, // TODO: Add env variables
+    `${config.GRPC.HOST}:${config.GRPC.PORT}`,
     ServerCredentials.createInsecure(),
     (err, port) => {
       if (err) {
@@ -18,6 +18,3 @@ export const serve = () => {
     }
   );
 };
-
-// TODO: Use env variables to allow call this function.
-serve();
