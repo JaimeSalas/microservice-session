@@ -1,0 +1,27 @@
+services:
+  order:
+    build: ./services/order 
+    ports:
+      - 3000:3000
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+      - GRPC_HOST=localhost
+      - GRPC_PORT=5000
+      - GRPC_ENABLED=false
+
+  basket:
+    build: ./services/basket 
+    ports: 
+      - 3001:3001
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3001 
+  
+  catalog:
+    build: ./services/basket 
+    ports: 
+      - 3002:3002
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3002 
